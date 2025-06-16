@@ -1,5 +1,7 @@
+/* Importa a fonte Inter do Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+/* Reset básico e fonte padrão */
 * {
     margin: 0;
     padding: 0;
@@ -7,23 +9,28 @@
     font-family: "Inter", sans-serif;
 }
 
+/* Define altura e cor de fundo do body */
 body {
     height: 100vh;
     width: 100vw;
     background-color: #e6e6e6;
 }
 
+/* Define largura máxima e altura do main */
 main {
     max-width: 1440px;
     height: 100vh;
 }
 
+/* Container do carrossel de imagens */
 .bg-img {
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 44.8vw;
+    overflow-x: hidden;
 }
 
+/* Sombra interna sobreposta ao carrossel */
 .bg-img::after {
     content: "";
     position: absolute;
@@ -32,12 +39,32 @@ main {
     z-index: 2;
 }
 
-.bg-img img {
-    box-shadow: inset 0px 4px 17px 12px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    object-fit: cover; /* Para cobrir o espaço sem distorcer */
+/* Linha de imagens do carrossel */
+.bg-img .img {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    /* Permite animação CSS, mas pode ser pausada via classe JS */
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+/* Cada metade do carrossel ocupa 50% */
+.bg-img .img .img-2 {
+    width: 50%;
+}
+
+.bg-img .img .img-1 {
+    width: 50%;
+}
+
+/* Imagens do carrossel com sombra e ajuste de proporção */
+.bg-img .img img {
+    box-shadow: inset 0px 4px 17px 12px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Caixa de texto sobre a imagem */
 .bg-img .text {
     position: relative;
     bottom: 68px;
@@ -46,6 +73,7 @@ main {
     background-color: rgba(0, 0, 0, 0.66);
 }
 
+/* Texto centralizado e estilizado */
 .bg-img .text p {
     width: 632px;
     color: #fff;
@@ -53,4 +81,54 @@ main {
     margin: auto;
     font-size: 16px;
     font-weight: 400;
+}
+
+/* Animação automática de carrossel, usada quando a classe .animating está presente */
+.bg-img.animating .img {
+    animation: carrossel 20s infinite alternate ease-in-out;
+}
+
+/* Keyframes para o carrossel automático:
+   - Fica parado até 45% do tempo
+   - Move para a esquerda até -50% entre 55% e 100%
+   - O 'alternate' faz o movimento de vai-e-vem */
+@keyframes carrossel {
+    0%,
+    45% {
+        transform: translateX(0);
+    }
+    55%,
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Animação rápida para ir para a esquerda, ativada pela classe .ir */
+.bg-img.ir .img {
+    animation: irCarrossel 2s forwards cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Animação rápida para voltar para a direita, ativada pela classe .voltar */
+.bg-img.voltar .img {
+    animation: voltarCarrossel 2s forwards cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Keyframes para ir para a esquerda */
+@keyframes irCarrossel {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Keyframes para voltar para a direita */
+@keyframes voltarCarrossel {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
