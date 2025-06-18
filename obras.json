@@ -1,0 +1,68 @@
+{
+    "Obras": [
+        {
+            "titulo": "A Boba (1915)",
+            "texto-1": "'A Boba' foi criada durante o período em que Anita Malfatti estava estudando nos Estados Unidos, onde teve contato com as vanguardas europeias, como o Expressionismo e o Cubismo. Essa experiência a libertou das amarras do academicismo tradicional e a levou a experimentar com cores vibrantes, formas distorcidas e uma abordagem mais subjetiva da realidade.",
+            "texto-2": "A obra fez parte da exposição individual de Anita Malfatti em São Paulo, em 1917. Essa exposição foi um divisor de águas, pois introduziu ao público brasileiro uma linguagem artística radicalmente nova.",
+            "tecnica": "Óleo sobre tela",
+            "dimensoes": "61,00 cm x 50,60 cm",
+            "local": "Coleção Museu de Arte Contemporânea da USP"
+        },
+        {
+            "titulo": "A Estudante Russa",
+            "texto-1": "'A Estudante Russa' é uma pintura de Anita Malfatti, criada em 1915. A obra reflete a influência do Expressionismo alemão, evidenciada pelo uso de cores intensas e pinceladas expressivas. A figura retratada, uma jovem com semblante introspectivo, é apresentada com traços distorcidos, característica marcante do estilo modernista da artista.",
+            "texto-2": "A pintura foi exibida na Exposição de Pintura Moderna, realizada em São Paulo entre 12 de dezembro de 1917 e 11 de janeiro de 1918, evento que gerou controvérsias devido à sua abordagem inovadora e ao rompimento com as convenções acadêmicas da época.",
+            "tecnica": "Óleo sobre tela",
+            "dimensoes": "76,00 cm x 61,00 cm",
+            "local": "Museu de Arte de São Paulo (MASP)"
+        },
+        {
+            "titulo": "A Estudante",
+            "texto-1": "A Estudante é uma pintura de Anita Malfatti, criada entre 1915 e 1916. A obra reflete a influência do Expressionismo alemão, evidenciada pelo uso de cores intensas e pinceladas expressivas. A figura retratada, uma jovem com semblante introspectivo, é apresentada com traços distorcidos, característica marcante do estilo modernista da artista.",
+            "texto-2": "A pintura foi exibida na Exposição de Pintura Moderna, realizada em São Paulo entre 12 de dezembro de 1917 e 11 de janeiro de 1918, evento que gerou controvérsias devido à sua abordagem inovadora e ao rompimento com as convenções acadêmicas da época.",
+            "tecnica": "Óleo sobre tela",
+            "dimensoes": "76,5 cm x 61 cm",
+            "local": "Museu de Arte de São Paulo (MASP)"
+        },
+        {
+            "titulo": "A Japonesa",
+            "texto-1": "A Japonesa é uma pintura de Anita Malfatti, criada em 1924. A obra retrata uma mulher japonesa com trajes tradicionais, evidenciando a influência do japonismo, movimento artístico europeu que apreciava a estética japonesa. A pintura reflete a admiração de Malfatti pela arte japonesa e sua busca por novas linguagens visuais.",
+            "texto-2": "A obra foi exibida na Exposição de Pintura Moderna de 1922, evento que marcou o início do modernismo no Brasil. A pintura causou impacto por sua abordagem inovadora e pela representação de uma cultura oriental, ampliando os horizontes da arte brasileira da época.",
+            "tecnica": "Óleo sobre tela",
+            "dimensoes": "79,8 cm x 98,4 cm",
+            "local": "Coleção Gilberto Chateaubriand – Museu de Arte Moderna do Rio de Janeiro (MAM Rio)"
+        },
+        {
+            "titulo": "A Mulher de Cabelos Verdes",
+            "texto-1": "A Mulher de Cabelos Verdes é uma pintura de Anita Malfatti, criada em 1915. A obra reflete a influência do Expressionismo alemão, evidenciada pelo uso de cores intensas e pinceladas expressivas. A figura retratada, uma mulher com cabelos verdes e semblante introspectivo, é apresentada com traços distorcidos, característica marcante do estilo modernista da artista.",
+            "texto-2": "A pintura foi exibida na Exposição de Pintura Moderna, realizada em São Paulo entre 12 de dezembro de 1917 e 11 de janeiro de 1918, evento que gerou controvérsias devido à sua abordagem inovadora e ao rompimento com as convenções acadêmicas da época.",
+            "tecnica": "Óleo sobre tela",
+            "dimensoes": "61,00 cm x 51,00 cm",
+            "local": "Coleção particular"
+        },
+        {
+            "titulo": "Academia (Torso de Homem)",
+            "texto-1": "Criada em 1912, 'Academia (Torso de Homem)' é uma pintura de Anita Malfatti que reflete sua formação acadêmica inicial. A obra apresenta um estudo anatômico do torso masculino, evidenciando a técnica de observação e o domínio das proporções humanas. Essa peça marca a fase de transição de Malfatti, que posteriormente se afastaria do academicismo para explorar novas linguagens artísticas.",
+            "texto-2": "A pintura foi realizada durante o período em que Malfatti estudava na Alemanha, onde teve contato com as vanguardas europeias. Essa experiência influenciou sua trajetória artística, levando-a a adotar uma abordagem mais subjetiva e expressiva em suas obras futuras.",
+            "tecnica": "Óleo sobre tela",
+            "dimensoes": "72,00 cm x 48,00 cm",
+            "local": "Museu de Arte Brasileira da FAAP"
+        },
+        {
+            "titulo": "Auto‑Retrato",
+            "texto-1": "O 'Auto‑Retrato', criado por Anita Malfatti em 1922, foi realizado em pastel sobre papelão. A obra reflete sua transição para um estilo mais introspectivo e pessoal, onde ela explora sensibilidade e introspecção com traços delicados e uma paleta suave.",
+            "texto-2": "A peça faz parte da Coleção de Artes Visuais do Instituto de Estudos Brasileiros da USP, exibida em várias retrospectivas sobre Malfatti e considerada emblemática de sua fase pós‑Semana de Arte Moderna de 1922, marcando a evolução de sua linguagem visual.",
+            "tecnica": "Pastel sobre papelão",
+            "dimensoes": "36,5 cm x 25,5 cm",
+            "local": "Coleção de Artes Visuais do Instituto de Estudos Brasileiros – USP"
+        },
+        {
+            "titulo": "Georgina",
+            "texto-1": "“Georgina” é uma pintura de Anita Malfatti realizada em 1914. A obra retrata uma jovem com um cesto de flores, usando cores vibrantes e pinceladas expressivas, evidenciando a influência do Expressionismo europeu em sua transição estilística.",
+            "texto-2": "A obra foi apresentada em sua primeira exposição individual em maio de 1914 em São Paulo, importante momento antes de seu aprofundamento estudantil na Europa e nos EUA. A pintura reflete sua busca por uma linguagem pessoal e moderna, em um ambiente artístico ainda conservador.",
+            "tecnica": "Óleo sobre tela",
+            "dimensoes": "98,00 cm x 73,00 cm",
+            "local": "Coleção Itaú Cultural (reprodução fotográfica) / IEB‑USP"
+        }
+    ]
+}
