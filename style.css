@@ -19,7 +19,6 @@ body {
 /* Define largura máxima e altura do main */
 main {
     max-width: 1440px;
-    height: 100vh;
 }
 
 /* Container do carrossel de imagens */
@@ -29,6 +28,7 @@ main {
     height: 44.8vw;
     margin-bottom: 30px;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /* Sombra interna sobreposta ao carrossel */
@@ -76,7 +76,7 @@ main {
 
 /* Texto centralizado e estilizado */
 .bg-img .text p {
-    width: 632px;
+    width: 70vh;
     color: #fff;
     text-align: center;
     margin: auto;
@@ -138,18 +138,20 @@ main {
 .main {
     padding: 30px;
     line-height: 35px;
+    width: 100vw;
 }
 
 /* Títulos dentro da main: aumenta o tamanho da fonte, espaçamento inferior e adiciona sublinhado colorido */
-.main h2 {
+h2 {
     font-size: 36px;
     margin-bottom: 30px;
     text-decoration: underline;
     text-decoration-color: #c44a8d;
+    font-weight: 500;
 }
 
 /* Parágrafos dentro da main: define tamanho da fonte, espaçamento entre letras, justifica o texto e espaça embaixo */
-.main p {
+p {
     font-size: 21px;
     letter-spacing: 10%;
     text-align: justify;
@@ -274,4 +276,52 @@ main {
 /* Muda o fundo do indicador quando estiver marcado */
 .main .obras .imagesIndex input[type="radio"]:checked {
     background-color: #000;
+}
+
+.anita-style .img-text {
+    display: flex;
+    justify-content: space-around;
+}
+
+.anita-style .img-text img {
+    height: 59vw;
+    margin-right: 30px;
+}
+
+footer {
+    max-width: 1200px;
+    background-color: #d9d9d9;
+    margin: auto;
+    padding: 30px 30px 0px 30px;
+    box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.25);
+}
+
+footer h2 {
+    text-decoration: none;
+}
+
+footer p {
+    margin-bottom: 52px;
+    text-align: justify;
+}
+
+footer .links {
+    display: flex;
+    flex-direction: column;
+    font-size: 23px;
+    gap: 10px;
+}
+
+footer .links a {
+    font-weight: 400;
+}
+
+footer .links a:visited {
+    color: #000;
+}
+
+footer p.creditos {
+    position: relative;
+    bottom: 10px;
+    margin-top: 52px;
 }
