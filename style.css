@@ -84,36 +84,6 @@ main {
     font-weight: 400;
 }
 
-/* Animação automática de carrossel, usada quando a classe .animating está presente */
-.bg-img.animating .img {
-    animation: carrossel 20s infinite alternate ease-in-out;
-}
-
-/* Keyframes para o carrossel automático:
-   - Fica parado até 45% do tempo
-   - Move para a esquerda até -50% entre 55% e 100%
-   - O 'alternate' faz o movimento de vai-e-vem */
-@keyframes carrossel {
-    0%,
-    45% {
-        transform: translateX(0);
-    }
-    55%,
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* Animação rápida para ir para a esquerda, ativada pela classe .ir */
-.bg-img.ir .img {
-    animation: irCarrossel 2s forwards cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-/* Animação rápida para voltar para a direita, ativada pela classe .voltar */
-.bg-img.voltar .img {
-    animation: voltarCarrossel 2s forwards cubic-bezier(0.77, 0, 0.175, 1);
-}
-
 /* Keyframes para ir para a esquerda */
 @keyframes irCarrossel {
     from {
@@ -134,11 +104,43 @@ main {
     }
 }
 
+/* Keyframes para o carrossel automático:
+   - Fica parado até 45% do tempo
+   - Move para a esquerda até -50% entre 55% e 100%
+   - O 'alternate' faz o movimento de vai-e-vem */
+@keyframes carrossel {
+    0%,
+    45% {
+        transform: translateX(0);
+    }
+    55%,
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Animação automática de carrossel, usada quando a classe .animating está presente */
+.bg-img.animating .img {
+    animation: carrossel 20s infinite alternate ease-in-out;
+}
+
+/* Animação rápida para ir para a esquerda, ativada pela classe .ir */
+.bg-img.ir .img {
+    animation: irCarrossel 2s forwards cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Animação rápida para voltar para a direita, ativada pela classe .voltar */
+.bg-img.voltar .img {
+    animation: voltarCarrossel 2s forwards cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Estiliza a section principal com padding e espaçamento entre linhas */
 .main {
     padding: 30px;
     line-height: 35px;
 }
 
+/* Títulos dentro da main: aumenta o tamanho da fonte, espaçamento inferior e adiciona sublinhado colorido */
 .main h2 {
     font-size: 36px;
     margin-bottom: 30px;
@@ -146,6 +148,7 @@ main {
     text-decoration-color: #c44a8d;
 }
 
+/* Parágrafos dentro da main: define tamanho da fonte, espaçamento entre letras, justifica o texto e espaça embaixo */
 .main p {
     font-size: 21px;
     letter-spacing: 10%;
@@ -153,6 +156,7 @@ main {
     margin-bottom: 30px;
 }
 
+/* Mensagem curta acima do carrossel: define fonte pequena, espaçamento e alinha à direita */
 .main .obras #short-menssage {
     display: block;
     font-size: 14px;
@@ -160,6 +164,7 @@ main {
     text-align: right;
 }
 
+/* Estiliza o container do carrossel com fundo branco, padding e sombra */
 .main .obras .carrossel {
     background-color: #fff;
     padding: 30px;
@@ -167,12 +172,14 @@ main {
     margin-bottom: 10px;
 }
 
+/* Organiza a div principal do carrossel: seta horizontal, imagens e outra seta */
 .main .obras .carrossel .carroselDiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Botões de navegação do carrossel: largura, altura, cor, borda arredondada, ícone grande e cursor pointer */
 .main .obras .carrossel .carroselDiv button {
     width: 77px;
     height: 200px;
@@ -185,33 +192,40 @@ main {
     cursor: pointer;
 }
 
+/* Container das imagens do carrossel: largura fixa, flexbox e overflow escondido pra esconder imagens fora da tela */
 .main .obras .carrossel .carroselDiv .images {
     width: 450px;
     display: flex;
     overflow: hidden;
 }
 
+/* Imagens individuais das obras: largura fixa, borda preta e cantos arredondados */
 .main .obras .carrossel .carroselDiv .images .obra img {
     width: 450px;
     border: 5px solid black;
     border-radius: 10px;
+    cursor: pointer;
 }
 
+/* Legenda da imagem: tamanho de fonte, alinhamento central e quebra de linha */
 .main .obras .carrossel .carroselDiv .images .obra span {
     font-size: 20px;
     text-align: center;
     display: block;
 }
 
+/* Ajuste fino no texto do botão de parar animação */
 .main .obras .carrossel .stop-animation #text {
     position: relative;
     top: -2px;
 }
 
+/* Radios dentro da seção de animação: escondidos */
 .main .obras .carrossel .stop-animation input[type="radio"] {
     display: none;
 }
 
+/* Se o radio tiver sido marcado, aplica ícone de “checado” como fundo */
 .main .obras .carrossel .stop-animation .txt {
     width: 19px;
     height: 19px;
@@ -220,14 +234,17 @@ main {
     cursor: pointer;
 }
 
+/* Aplica imagem de fundo ao radio quando marcado */
 .main .obras .carrossel .stop-animation input[type="radio"]:checked + .txt {
     background-image: url("./images/icons/checked-icon.png");
 }
 
+/* Esconde o checkbox de parar animação */
 .main .obras .carrossel .stop-animation input[type="checkbox"] {
     display: none;
 }
 
+/* Aplica imagem de checado ao checkbox marcado, com fundo cinza */
 .main .obras .carrossel .stop-animation input[type="checkbox"]:checked + .txt {
     background-image: url("./images/icons/checked-icon.png");
     background-size: contain;
@@ -236,21 +253,25 @@ main {
     background-color: #a0a0a0;
 }
 
+/* Torna o rótulo clicável */
 .main .obras .carrossel .stop-animation label {
     cursor: pointer;
 }
 
+/* Container dos botões de navegação das imagens (indicadores) */
 .main .obras .imagesIndex {
     display: flex;
     justify-content: center;
     gap: 5px;
 }
 
+/* Estilo base dos inputs de radio dos indicadores */
 .main .obras .imagesIndex input[type="radio"] {
     height: 18px;
     width: 18px;
 }
 
+/* Muda o fundo do indicador quando estiver marcado */
 .main .obras .imagesIndex input[type="radio"]:checked {
     background-color: #000;
 }

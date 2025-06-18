@@ -1,6 +1,5 @@
-const bgImg_div = document.querySelector(".bg-img");
-
-let estado = false;
+const bgImg_div = document.querySelector(".bg-img"); // DOM da div das imgs de fundo
+let estado = false; // guarda se o estado é true/false para a img ir/voltar
 
 // Alterna entre as classes .ir e .voltar a cada 10 segundos
 setInterval(() => {
@@ -11,29 +10,36 @@ setInterval(() => {
         bgImg_div.classList.remove("ir");
         bgImg_div.classList.add("voltar"); // Aplica animação para a direita
     }
-    estado = !estado;
+
+    estado = !estado; // inverte o valor de estado
 }, 10000);
 
-let i = 0;
-
+// DOM de da div das obras; btn de parar animação; inputs radio;
 const imagesDiv = document.querySelector(".images");
 const stopAnimation_btn = document.querySelector("#stopAnimation_input");
 const inputIndex = document.querySelectorAll(".imagesIndex input");
 
+// desativa o btn e poe a primeira obra como visivel
+stopAnimation_btn.checked = false;
 imagesDiv.scrollBy(-3150, 0);
 
-let intervalo;
-stopAnimation_btn.checked = false;
-
+// desativa todos os inputs e so deixa o primeiro marcado
 inputIndex.forEach((input, index) => {
     input.checked = index === 0;
 });
 
+// variaveis que guarda o setInterval e o indice da obra
+let intervalo = null;
+let i = 0;
+
+// se btn desmarcado passa a obra a cada 5s
 function animationFunct() {
     if (stopAnimation_btn.checked == false) {
         intervalo = setInterval(() => {
             imagesDiv.scrollBy(450, 0);
             i++;
+
+            imagesDiv.classList.add("translate-1");
 
             if (i >= 8) {
                 i = 0;
@@ -47,18 +53,13 @@ function animationFunct() {
             }
 
             inputIndex[i].checked = true;
-        }, 1000);
+        }, 5000);
     } else {
         clearInterval(intervalo);
     }
 }
 
-stopAnimation_btn.addEventListener("click", animationFunct);
-animationFunct();
-
-const leftArrow = document.querySelector(".left-arrow");
-const rightArrow = document.querySelector(".right-arrow");
-
+// ao clicar no btn passa para a proxima obra
 function passArtLeft() {
     if (imagesDiv.scrollLeft === 0) {
         imagesDiv.scrollBy(3150, 0);
@@ -77,6 +78,7 @@ function passArtLeft() {
     inputIndex[i].checked = true;
 }
 
+// ao clicar no btn passa para a ultima obra
 function passArtRight() {
     if (imagesDiv.scrollLeft === 3150) {
         imagesDiv.scrollBy(-3150, 0);
@@ -99,5 +101,33 @@ function passArtRight() {
     }
 }
 
-leftArrow.addEventListener("click", passArtLeft);
-rightArrow.addEventListener("click", passArtRight);
+// btns de passar e voltar obras
+const leftArrow = document.querySelector(".left-arrow");
+const rightArrow = document.querySelector(".right-arrow");
+
+// se pular animação desmarcado blqueia as funções, caso marcado ele ativa
+function blockBtn() {
+    if (stopAnimation_btn.checked == false) {
+        leftArrow.style.cursor = "not-allowed";
+        rightArrow.style.cursor = "not-allowed";
+
+        leftArrow.removeEventListener("click", passArtLeft);
+        rightArrow.removeEventListener("click", passArtRight);
+    } else {
+        leftArrow.style.cursor = "pointer";
+        rightArrow.style.cursor = "pointer";
+
+        leftArrow.addEventListener("click", passArtLeft);
+        rightArrow.addEventListener("click", passArtRight);
+    }
+}
+
+// chama todos os eventos para as obras ao ser clicado
+stopAnimation_btn.addEventListener("click", () => {
+    animationFunct();
+    blockBtn();
+});
+
+// chama todos os eventos para as obras
+animationFunct();
+blockBtn();
