@@ -39,14 +39,15 @@ function animationFunct() {
 
     if (!stopAnimation_btn.checked) {
         intervalo = setInterval(() => {
-            imagesDiv.scrollBy(imgWidth, 0);
+            imagesDiv.scrollBy({ left: imgWidth, behavior: "smooth" });
+
             i++;
 
             imagesDiv.classList.add("translate-1");
 
             if (i >= totalImgs) {
                 i = 0;
-                imagesDiv.scrollBy(-fullScroll, 0);
+                imagesDiv.scrollBy({ left: -fullScroll, behavior: "smooth" });
             }
 
             inputIndex.forEach((input) => (input.checked = false));
@@ -60,35 +61,43 @@ function animationFunct() {
 }
 
 function passArtLeft() {
-    if (imagesDiv.scrollLeft === 0) {
-        imagesDiv.scrollBy(fullScroll, 0);
-        i = totalImgs - 1;
-    } else {
-        imagesDiv.scrollBy(-imgWidth, 0);
-        i--;
-        ajustarAlturaCarrossel();
-    }
+    setTimeout(() => {
+        if (imagesDiv.scrollLeft === 0) {
+            imagesDiv.scrollBy({ left: fullScroll, behavior: "smooth" });
 
-    if (i < 0) i = totalImgs - 1;
+            i = totalImgs - 1;
+        } else {
+            imagesDiv.scrollBy({ left: -imgWidth, behavior: "smooth" });
 
-    inputIndex.forEach((input) => (input.checked = false));
-    inputIndex[i].checked = true;
+            i--;
+            ajustarAlturaCarrossel();
+        }
+
+        if (i < 0) i = totalImgs - 1;
+
+        inputIndex.forEach((input) => (input.checked = false));
+        inputIndex[i].checked = true;
+    }, 150);
 }
 
 function passArtRight() {
-    if (imagesDiv.scrollLeft >= fullScroll - imgWidth) {
-        imagesDiv.scrollBy(-fullScroll, 0);
-        i = 0;
-    } else {
-        imagesDiv.scrollBy(imgWidth, 0);
-        i++;
-        ajustarAlturaCarrossel();
-    }
+    setTimeout(() => {
+        if (imagesDiv.scrollLeft >= fullScroll - imgWidth) {
+            imagesDiv.scrollBy({ left: -fullScroll, behavior: "smooth" });
 
-    if (i >= totalImgs) i = 0;
+            i = 0;
+        } else {
+            imagesDiv.scrollBy({ left: imgWidth, behavior: "smooth" });
 
-    inputIndex.forEach((input) => (input.checked = false));
-    inputIndex[i].checked = true;
+            i++;
+            ajustarAlturaCarrossel();
+        }
+
+        if (i >= totalImgs) i = 0;
+
+        inputIndex.forEach((input) => (input.checked = false));
+        inputIndex[i].checked = true;
+    }, 150);
 }
 
 function ajustarAlturaCarrossel() {

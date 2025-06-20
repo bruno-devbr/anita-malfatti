@@ -469,6 +469,7 @@ footer p.creditos {
     .main .obras .carrossel .carroselDiv .images {
         width: calc(100vw - 60px);
         margin: auto;
+         scroll-behavior: smooth;
     }
 
     .main .obras .carrossel .carroselDiv .images .obra img {
