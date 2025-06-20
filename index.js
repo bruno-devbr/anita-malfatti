@@ -24,7 +24,7 @@ console.log(imgWidth);
 const totalImgs = inputIndex.length;
 const fullScroll = imgWidth * totalImgs;
 
-stopAnimation_btn.checked = true;
+stopAnimation_btn.checked = false;
 imagesDiv.scrollBy(-fullScroll, 0);
 
 inputIndex.forEach((input, index) => {
