@@ -463,10 +463,6 @@ footer p.creditos {
 }
 
 @media (max-width: 850px) {
-    .bg-img {
-        padding: 10px;
-    }
-
     .bg-img .text p {
         font-size: 16px;
     }
