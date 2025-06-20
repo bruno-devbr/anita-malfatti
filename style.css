@@ -363,7 +363,7 @@ footer p.creditos {
     position: fixed;
     z-index: 10;
     width: 95vw;
-    height: 60vw;
+    height: 50vw;
     background-color: #fff;
     border-radius: 25px;
     display: flex;
@@ -372,7 +372,7 @@ footer p.creditos {
 .modal img {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
-    height: 60vw;
+    height: 50vw;
 }
 
 .modal .modal-txt {
@@ -384,6 +384,10 @@ footer p.creditos {
     width: 100%;
     margin-bottom: 10px;
     text-align: right;
+}
+
+.modal .modal-txt p {
+    letter-spacing: 0;
 }
 
 .modal .modal-txt ul {
@@ -415,8 +419,51 @@ footer p.creditos {
     }
 }
 
+@media (max-width: 1100px) {
+    .modal .modal-txt p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 905px) {
+    .modal-fundo #close {
+        top: 1px;
+        right: 10px;
+    }
+
+    .modal {
+        flex-direction: column;
+        padding: 15px;
+        height: 95vh;
+        overflow-x: scroll;
+    }
+
+    .modal .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal img {
+        width: 38vw;
+        height: auto;
+
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    .modal .modal-txt ul {
+        position: relative;
+        top: 0;
+    }
+
+    .modal .modal-txt p {
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 850px) {
-    .bg-img .text {
+    .bg-img {
         padding: 10px;
     }
 
@@ -469,7 +516,7 @@ footer p.creditos {
     .main .obras .carrossel .carroselDiv .images {
         width: calc(100vw - 60px);
         margin: auto;
-         scroll-behavior: smooth;
+        scroll-behavior: smooth;
     }
 
     .main .obras .carrossel .carroselDiv .images .obra img {
@@ -517,5 +564,11 @@ footer p.creditos {
 
     footer p.creditos {
         margin-top: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .modal img {
+        width: 80%;
     }
 }
