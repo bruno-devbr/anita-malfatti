@@ -1,118 +1,118 @@
-const bgImg_div = document.querySelector(".bg-img"); // DOM da div das imgs de fundo
-let estado = false; // guarda se o estado é true/false para a img ir/voltar
+const bgImg_div = document.querySelector(".bg-img");
+let estado = false;
 
-// Alterna entre as classes .ir e .voltar a cada 10 segundos
 setInterval(() => {
     if (!estado) {
-        bgImg_div.classList.add("ir"); // Aplica animação para a esquerda
+        bgImg_div.classList.add("ir");
         bgImg_div.classList.remove("voltar");
     } else {
         bgImg_div.classList.remove("ir");
-        bgImg_div.classList.add("voltar"); // Aplica animação para a direita
+        bgImg_div.classList.add("voltar");
     }
-
-    estado = !estado; // inverte o valor de estado
+    estado = !estado;
 }, 10000);
 
-// DOM de da div das obras; btn de parar animação; inputs radio;
 const imagesDiv = document.querySelector(".images");
 const stopAnimation_btn = document.querySelector("#stopAnimation_input");
 const inputIndex = document.querySelectorAll(".imagesIndex input");
+const leftArrow = document.querySelector(".left-arrow");
+const rightArrow = document.querySelector(".right-arrow");
 
-// desativa o btn e poe a primeira obra como visivel
-stopAnimation_btn.checked = false;
-imagesDiv.scrollBy(-3150, 0);
+// PEGA A LARGURA REAL DE UMA IMAGEM + 5px de margem
+const imgWidth = document.querySelector(".images img").offsetWidth + 5;
+console.log(imgWidth);
+const totalImgs = inputIndex.length;
+const fullScroll = imgWidth * totalImgs;
 
-// desativa todos os inputs e so deixa o primeiro marcado
+stopAnimation_btn.checked = true;
+imagesDiv.scrollBy(-fullScroll, 0);
+
 inputIndex.forEach((input, index) => {
     input.checked = index === 0;
 });
 
-// variaveis que guarda o setInterval e o indice da obra
 let intervalo = null;
 let i = 0;
 
-// se btn desmarcado passa a obra a cada 5s
 function animationFunct() {
-    if (stopAnimation_btn.checked == false) {
+    clearInterval(intervalo);
+
+    if (!stopAnimation_btn.checked) {
         intervalo = setInterval(() => {
-            imagesDiv.scrollBy(450, 0);
+            imagesDiv.scrollBy(imgWidth, 0);
             i++;
 
             imagesDiv.classList.add("translate-1");
 
-            if (i >= 8) {
+            if (i >= totalImgs) {
                 i = 0;
-                imagesDiv.scrollBy(-3600, 0);
+                imagesDiv.scrollBy(-fullScroll, 0);
             }
 
-            if (i == 0) {
-                inputIndex[7].checked = false;
-            } else {
-                inputIndex[i - 1].checked = false;
-            }
-
+            inputIndex.forEach((input) => (input.checked = false));
             inputIndex[i].checked = true;
+
+            ajustarAlturaCarrossel();
         }, 5000);
     } else {
         clearInterval(intervalo);
     }
 }
 
-// ao clicar no btn passa para a proxima obra
 function passArtLeft() {
     if (imagesDiv.scrollLeft === 0) {
-        imagesDiv.scrollBy(3150, 0);
-        i = 7;
+        imagesDiv.scrollBy(fullScroll, 0);
+        i = totalImgs - 1;
     } else {
-        imagesDiv.scrollBy(-450, 0);
+        imagesDiv.scrollBy(-imgWidth, 0);
         i--;
+        ajustarAlturaCarrossel();
     }
 
-    if (i == 7) {
-        inputIndex[0].checked = false;
-    } else {
-        inputIndex[i + 1].checked = false;
-    }
+    if (i < 0) i = totalImgs - 1;
 
+    inputIndex.forEach((input) => (input.checked = false));
     inputIndex[i].checked = true;
 }
 
-// ao clicar no btn passa para a ultima obra
 function passArtRight() {
-    if (imagesDiv.scrollLeft === 3150) {
-        imagesDiv.scrollBy(-3150, 0);
+    if (imagesDiv.scrollLeft >= fullScroll - imgWidth) {
+        imagesDiv.scrollBy(-fullScroll, 0);
         i = 0;
     } else {
-        imagesDiv.scrollBy(450, 0);
+        imagesDiv.scrollBy(imgWidth, 0);
         i++;
+        ajustarAlturaCarrossel();
     }
 
+    if (i >= totalImgs) i = 0;
+
+    inputIndex.forEach((input) => (input.checked = false));
     inputIndex[i].checked = true;
+}
 
-    if (i == 8) {
-        i = 0;
-    }
+function ajustarAlturaCarrossel() {
+    if (window.innerWidth > 750) return;
 
-    if (i == 0) {
-        inputIndex[7].checked = false;
+    const images = document.querySelector(".images");
+    const imagemAtual = document.querySelectorAll(".images .obra img")[i];
+
+    if (!imagemAtual.complete) {
+        imagemAtual.onload = () => {
+            images.style.height = imagemAtual.offsetHeight + 50 + "px";
+        };
     } else {
-        inputIndex[i - 1].checked = false;
+        images.style.height = imagemAtual.offsetHeight + 50 + "px";
     }
 }
 
-// btns de passar e voltar obras
-const leftArrow = document.querySelector(".left-arrow");
-const rightArrow = document.querySelector(".right-arrow");
-
-// se pular animação desmarcado blqueia as funções, caso marcado ele ativa
 function blockBtn() {
-    if (stopAnimation_btn.checked == false) {
+    leftArrow.removeEventListener("click", passArtLeft);
+    rightArrow.removeEventListener("click", passArtRight);
+
+    if (!stopAnimation_btn.checked) {
         leftArrow.style.cursor = "not-allowed";
         rightArrow.style.cursor = "not-allowed";
-
-        leftArrow.removeEventListener("click", passArtLeft);
-        rightArrow.removeEventListener("click", passArtRight);
     } else {
         leftArrow.style.cursor = "pointer";
         rightArrow.style.cursor = "pointer";
@@ -122,12 +122,11 @@ function blockBtn() {
     }
 }
 
-// chama todos os eventos para as obras ao ser clicado
 stopAnimation_btn.addEventListener("click", () => {
     animationFunct();
     blockBtn();
 });
 
-// chama todos os eventos para as obras
+ajustarAlturaCarrossel();
 animationFunct();
 blockBtn();

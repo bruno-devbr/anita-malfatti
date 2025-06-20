@@ -18,7 +18,7 @@ body {
 
 /* Define largura máxima e altura do main */
 main {
-    max-width: 1440px;
+    width: 100vw;
 }
 
 /* Container do carrossel de imagens */
@@ -49,13 +49,10 @@ main {
     transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Cada metade do carrossel ocupa 50% */
-.bg-img .img .img-2 {
+.bg-img .img .img-1,
+.img-2 {
     width: 50%;
-}
-
-.bg-img .img .img-1 {
-    width: 50%;
+    position: relative;
 }
 
 /* Imagens do carrossel com sombra e ajuste de proporção */
@@ -67,8 +64,9 @@ main {
 
 /* Caixa de texto sobre a imagem */
 .bg-img .text {
-    position: relative;
-    bottom: 68px;
+    display: flex;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     padding: 13px;
     background-color: rgba(0, 0, 0, 0.66);
@@ -79,9 +77,10 @@ main {
     width: 70vh;
     color: #fff;
     text-align: center;
-    margin: auto;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
+    margin: auto;
+    margin-bottom: 0;
 }
 
 /* Keyframes para ir para a esquerda */
@@ -127,6 +126,7 @@ main {
 /* Animação rápida para ir para a esquerda, ativada pela classe .ir */
 .bg-img.ir .img {
     animation: irCarrossel 2s forwards cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 0;
 }
 
 /* Animação rápida para voltar para a direita, ativada pela classe .voltar */
@@ -136,7 +136,7 @@ main {
 
 /* Estiliza a section principal com padding e espaçamento entre linhas */
 .main {
-    padding: 30px;
+    padding: 0 30px 30px 30px;
     line-height: 35px;
     width: 100vw;
 }
@@ -172,13 +172,15 @@ p {
     padding: 30px;
     box-shadow: -8px 10px 6px -2px rgba(0, 0, 0, 0.25);
     margin-bottom: 10px;
+    width: calc(100vw - 60px);
 }
 
 /* Organiza a div principal do carrossel: seta horizontal, imagens e outra seta */
 .main .obras .carrossel .carroselDiv {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Centraliza as imagens */
     align-items: center;
+    position: relative; /* necessário pro position absolute dos botões */
 }
 
 /* Botões de navegação do carrossel: largura, altura, cor, borda arredondada, ícone grande e cursor pointer */
@@ -199,6 +201,7 @@ p {
     width: 450px;
     display: flex;
     overflow: hidden;
+    gap: 5px;
 }
 
 /* Imagens individuais das obras: largura fixa, borda preta e cantos arredondados */
@@ -280,16 +283,18 @@ p {
 
 .anita-style .img-text {
     display: flex;
-    justify-content: space-around;
 }
 
 .anita-style .img-text img {
-    height: 59vw;
     margin-right: 30px;
+    width: auto;
+    margin: 0;
+    margin-right: 30px;
+    height: 60vw;
 }
 
 footer {
-    max-width: 1200px;
+    width: 95vw;
     background-color: #d9d9d9;
     margin: auto;
     padding: 30px 30px 0px 30px;
@@ -324,4 +329,192 @@ footer p.creditos {
     position: relative;
     bottom: 10px;
     margin-top: 52px;
+}
+
+.modal-fundo {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-fundo #close {
+    background-color: #ff3a3a;
+    z-index: 11;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    font-size: 20px;
+    color: #722a2a;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    z-index: 10;
+    width: 95vw;
+    height: 60vw;
+    background-color: #fff;
+    border-radius: 25px;
+    display: flex;
+}
+
+.modal img {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 60vw;
+}
+
+.modal .modal-txt {
+    padding: 30px;
+}
+
+.modal .modal-txt h2 {
+    text-decoration: none;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.modal .modal-txt ul {
+    position: absolute;
+    bottom: 30px;
+}
+
+@media (min-width: 1550px) {
+    .anita-style .img-text img {
+        width: auto;
+        margin: 0;
+        margin-right: 30px;
+        height: 929px;
+    }
+}
+
+@media (max-width: 1230px) {
+    .anita-style .img-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .anita-style .img-text img {
+        margin-right: 30px;
+        height: auto;
+        width: 50vw;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 850px) {
+    .bg-img .text {
+        padding: 10px;
+    }
+
+    .bg-img .text p {
+        font-size: 16px;
+    }
+
+    .anita-style .img-text img {
+        margin-right: 30px;
+        height: auto;
+        width: 100%;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 750px) {
+    h2 {
+        font-size: 29px;
+    }
+
+    p {
+        font-size: 18px;
+        letter-spacing: 5%;
+    }
+
+    .bg-img {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .bg-img .text {
+        display: none;
+    }
+
+    .bg-img .img {
+        order: 0;
+    }
+
+    .main .obras .carrossel {
+        padding: 0;
+        margin-bottom: 30px;
+        height: unset;
+        transition: height 0.5s ease;
+        overflow: hidden;
+    }
+
+    .main .obras .carrossel .carroselDiv .images {
+        width: calc(100vw - 60px);
+        margin: auto;
+    }
+
+    .main .obras .carrossel .carroselDiv .images .obra img {
+        width: calc(100vw - 60px);
+    }
+
+    .main .obras .carrossel .carroselDiv button {
+        background-color: rgba(0, 0, 0, 0.3); /* cor escura semi-transparente */
+        color: white;
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 3;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Esquerda */
+    .main .obras .carrossel .carroselDiv .left-arrow {
+        left: 10px;
+    }
+
+    /* Direita */
+    .main .obras .carrossel .carroselDiv .right-arrow {
+        right: 10px;
+    }
+
+    .main .obras .carrossel .stop-animation {
+        position: relative;
+        left: 10px;
+    }
+
+    footer .links {
+        font-size: 20px;
+    }
+
+    footer p {
+        margin-bottom: 30px;
+    }
+
+    footer p.creditos {
+        margin-top: 30px;
+    }
 }
